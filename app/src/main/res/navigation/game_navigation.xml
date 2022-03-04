@@ -3,43 +3,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/game_navigation"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/itemHome"
         android:name="com.ubaya.adv160419015week2.MainFragment"
         android:label="Main Screen"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/actionGameFragment"
-            app:destination="@id/gameFragment"
+            app:destination="@id/itemGame"
             app:enterAnim="@android:anim/fade_in" />
+        <action
+            android:id="@+id/actionOptionsFragment"
+            app:destination="@id/optionsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/gameFragment"
+        android:id="@+id/itemGame"
         android:name="com.ubaya.adv160419015week2.GameFragment"
         android:label="Game Screen"
         tools:layout="@layout/fragment_game" >
         <action
             android:id="@+id/actionMainFragment"
-            app:destination="@id/mainFragment"
+            app:destination="@id/itemHome"
             app:enterAnim="@android:anim/slide_out_right" />
         <argument
             android:name="playerName"
             app:argType="string" />
         <action
             android:id="@+id/actionResultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/itemResult" />
     </fragment>
     <fragment
-        android:id="@+id/resultFragment"
+        android:id="@+id/itemResult"
         android:name="com.ubaya.adv160419015week2.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <action
             android:id="@+id/actionMainFragment_ResultFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/itemHome"
+            app:popUpTo="@id/itemHome"
+            app:popUpToInclusive="true" />
         <argument android:name="playerScore"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="com.ubaya.adv160419015week2.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.ubaya.adv160419015week2.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <dialog
+        android:id="@+id/optionsFragment"
+        android:name="com.ubaya.adv160419015week2.OptionsFragment"
+        android:label="fragment_options"
+        tools:layout="@layout/fragment_options" />
 </navigation>
